@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from 'react';
-import { GraphComponent } from './GraphComponent';
+import { GraphComponent } from './graph-component';
 
 interface Event {
   author: string;
