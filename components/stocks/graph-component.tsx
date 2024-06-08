@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NetworkDiagram } from './network-diagram';
+import { Node, Link } from './draw-network';
+
 
 interface Event {
   author: string;
@@ -17,8 +19,10 @@ interface GraphComponentProps {
 }
 
 interface GraphData {
-  nodes: Array<{ id: string; label: string }>;
-  edges: Array<{ from: string; to: string; weight: number }>;
+  nodes: Array<{
+      metadata: any; id: string; label: string 
+}>;
+  edges: Array<{ from: Node; to: Node; weight: number }>;
 }
 
 export const GraphComponent: React.FC<GraphComponentProps> = ({ event, onClose }) => {
@@ -40,6 +44,21 @@ export const GraphComponent: React.FC<GraphComponentProps> = ({ event, onClose }
     fetchGraphData();
   }, [event.book_id]);
 
+
+  const nodes: Node[] = graphData?.nodes.map(node => ({
+    id: node.id,
+    group: node.label,
+    x: 0,
+    y: 0,
+    metadata: node.metadata // Storing metadata in each node
+  })) || [];
+
+  const links: Link[] = graphData?.edges.map(edge => ({
+    source: nodes.find(node => node.id === edge.from.id) as Node,
+    target: nodes.find(node => node.id === edge.to.id) as Node,
+    value: edge.weight
+  })) || [];
+
   return (
     <div className="absolute inset-0 bg-zinc-900 bg-opacity-90 flex flex-col">
       <button onClick={onClose} className="self-end m-4 text-zinc-400">
@@ -56,8 +75,7 @@ export const GraphComponent: React.FC<GraphComponentProps> = ({ event, onClose }
                   width={800}
                   height={600}
                   data={{
-                    nodes: graphData.nodes.map(node => ({ id: node.id, group: node.label, x: 0, y: 0 })),
-                    links: graphData.edges.map(edge => ({ source: edge.from, target: edge.to, value: edge.weight }))
+                    nodes, links
                   }}
                   collideRadius={15}
                   manyBodyStrength={-30}
