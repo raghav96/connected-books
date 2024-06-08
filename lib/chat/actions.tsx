@@ -233,11 +233,12 @@ export const getUIStateFromAIState = (aiState: Chat) => {
             return tool.toolName === 'searchBooks' ? (
               <BotCard>
                 <Events
-                  props={tool.result.map((book: any) => ({
+                  props={Array.isArray(tool.result) ? tool.result.map((book: any) => ({
+                    book_id : book.metadata.book_id,
                     author: book.metadata.author,
                     title: book.metadata.title,
                     metadata: JSON.stringify(book.metadata)
-                  }))}
+                  })) : []}
                 />
               </BotCard>
             ) : null;

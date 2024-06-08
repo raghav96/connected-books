@@ -10,7 +10,7 @@ interface Event {
   metadata: string;
 }
 
-export function Events({ props: events }: { props: Event[] }) {
+export function Events({ props: any }: { props: any }) {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   const handleEventClick = (event: Event) => {
