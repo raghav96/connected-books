@@ -52,7 +52,7 @@ async function submitUserMessage(content: string) {
         name: message.name
       }))
     ],
-    text: async ({ content, done, delta }) => {
+    text: ({ content, done, delta }) => {
       if (!textStream) {
         textStream = createStreamableValue('');
         textNode = <BotMessage content={textStream.value} />;
