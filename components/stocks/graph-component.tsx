@@ -9,6 +9,8 @@ interface Event {
   book_id: string; // Ensure each event has a book_id for querying the graph
 }
 
+
+
 interface GraphComponentProps {
   event: Event;
   onClose: () => void;
@@ -54,7 +56,7 @@ export const GraphComponent: React.FC<GraphComponentProps> = ({ event, onClose }
                   width={800}
                   height={600}
                   data={{
-                    nodes: graphData.nodes.map(node => ({ id: node.id, group: node.label })),
+                    nodes: graphData.nodes.map(node => ({ id: node.id, group: node.label, x: 0, y: 0 })),
                     links: graphData.edges.map(edge => ({ source: edge.from, target: edge.to, value: edge.weight }))
                   }}
                   collideRadius={15}

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GraphComponent } from './graph-component';
 
 interface Event {
+  book_id: string;
   author: string;
   title: string;
   metadata: string;
