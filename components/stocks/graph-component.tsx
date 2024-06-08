@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { NetworkDiagram } from './NetworkDiagram';
+import { NetworkDiagram } from './network-diagram';
 
 interface Event {
   author: string;
