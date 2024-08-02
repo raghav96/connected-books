@@ -101,6 +101,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.2.0)
       react-intersection-observer:
         specifier: ^9.5.3
         version: 9.5.3(react@18.2.0)
@@ -2726,6 +2729,11 @@ packages:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
       react: ^18.2.0
+
+  react-icons@5.2.1:
+    resolution: {integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==}
+    peerDependencies:
+      react: '*'
 
   react-intersection-observer@9.5.3:
     resolution: {integrity: sha512-NJzagSdUPS5rPhaLsHXYeJbsvdpbJwL6yCHtMk91hc0ufQ2BnXis+0QQ9NBh6n9n+Q3OyjR6OQLShYbaNBkThQ==}
@@ -6234,6 +6242,10 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  react-icons@5.2.1(react@18.2.0):
+    dependencies:
+      react: 18.2.0
 
   react-intersection-observer@9.5.3(react@18.2.0):
     dependencies:
